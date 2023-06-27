@@ -85,6 +85,10 @@ class Pelt():
         "REDNYLON", "LIMENYLON", "GREENNYLON", "RAINBOWNYLON",
         "BLACKNYLON", "SPIKESNYLON", "WHITENYLON", "PINKNYLON", "PURPLENYLON", "MULTINYLON", "INDIGONYLON",
     ]
+    tooth_collars = [
+        "CRIMSONTEETH", "BLUETEETH", "YELLOWTEETH", "CYANTEETH", "REDTEETH", "LIMETEETH", "GREENTEETH", "RAINBOWTEETH",
+        "BLACKTEETH", "SPIKESTEETH", "WHITETEETH", "PINKTEETH", "PURPLETEETH", "MULTITEETH", "INDIGOTEETH"
+    ]
 
     tabbies = ["Tabby", "Ticked", "Mackerel", "Classic", "Sokoke", "Agouti"]
     spotted = ["Speckled", "Rosette"]

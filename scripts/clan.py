@@ -470,6 +470,7 @@ class Clan():
         self.pregnancy_data = {}
         self.inheritance = {}
         
+        
         """
         Reputation is for loners/kittypets/outsiders in general that wish to join the clan. 
         it's a range from 1-100, with 30-70 being neutral, 71-100 being "welcoming",
@@ -482,7 +483,10 @@ class Clan():
         It's a range from 1-100, with 26-74 being neutral, 75-100 being StarClan-aligned,
         and 1-25 being Dark Forest-aligned. If you're hostile to StarClan, they will VERY RARELY show up.
         """
-        self.alignment = 75
+        if game.clan.instructor.df is False:
+            self.alignment = 75
+        else:
+            self.alignment = 25
         
         self.starting_members = starting_members
         if game_mode in ['expanded', 'cruel season']:
