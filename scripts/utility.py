@@ -170,24 +170,54 @@ def get_current_season():
 
     modifiers = {
         "Newleaf": 0,
-        "Greenleaf": 3,
-        "Leaf-fall": 6,
-        "Leaf-bare": 9
+        "Greenleaf": 6,
+        "Leaf-fall": 12,
+        "Leaf-bare": 18
     }
     index = game.clan.age % 12 + modifiers[game.clan.starting_season]
 
-    if index > 11:
-        index = index - 12
+    if index > 17:
+        index = index - 18
 
     game.clan.current_season = game.clan.seasons[index]
 
     return game.clan.current_season
+    
+def get_current_moon():
+    """
+    function to handle the math for finding the Clan's current moon phase
+    :return: the Clan's current moon phase
+    """
+
+    modifiers = {
+        "New": 0,
+        "Waxing": 1,
+        "Half-waxing": 2,
+        "Full": 3,
+        "Half-waning": 4,
+        "Waning": 5,
+    }
+    index = game.clan.age % 6 + modifiers[game.clan.starting_moon]
+
+    if index > 5:
+        index = index - 6
+
+    game.clan.current_moon = game.clan.moons[index]
+    print(game.clan.current_moon)
+
+    return game.clan.current_moon
 
 def change_clan_reputation(difference):
     """
     will change the Clan's reputation with outsider cats according to the difference parameter.
     """
     game.clan.reputation += difference
+    
+def change_clan_alignment(difference):
+    """
+    will change the Clan's reputation with StarClan according to the difference parameter.
+    """
+    game.clan.alignment += difference
 
 
 def change_clan_relations(other_clan, difference):

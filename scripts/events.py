@@ -31,7 +31,7 @@ from scripts.events_module.outsider_events import OutsiderEvents
 from scripts.event_class import Single_Event
 from scripts.game_structure.game_essentials import game
 from scripts.utility import get_alive_kits, get_med_cats, ceremony_text_adjust, \
-    get_current_season, adjust_list_text, ongoing_event_text_adjust, event_text_adjust
+    get_current_season, get_current_moon, adjust_list_text, ongoing_event_text_adjust, event_text_adjust
 from scripts.events_module.generate_events import GenerateEvents
 from scripts.events_module.relationship.pregnancy_events import Pregnancy_Events
 from scripts.game_structure.windows import SaveError
@@ -94,9 +94,10 @@ class Events:
                 for cat in Cat.all_cats.values()):
             game.switches['no_able_left'] = False
 
-        # age up the clan, set current season
+        # age up the clan, set current season, set moon phase
         game.clan.age += 1
         get_current_season()
+        get_current_moon()
         # print(game.clan.current_season)
         self.pregnancy_events.handle_pregnancy_age(game.clan)
         self.check_war()

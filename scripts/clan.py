@@ -62,15 +62,35 @@ class Clan():
         'Newleaf',
         'Newleaf',
         'Newleaf',
+        'Newleaf',
+        'Newleaf',
+        'Newleaf',
+        'Greenleaf',
+        'Greenleaf',
+        'Greenleaf',
         'Greenleaf',
         'Greenleaf',
         'Greenleaf',
         'Leaf-fall',
         'Leaf-fall',
         'Leaf-fall',
+        'Leaf-fall',
+        'Leaf-fall',
+        'Leaf-fall',
         'Leaf-bare',
         'Leaf-bare',
         'Leaf-bare',
+        'Leaf-bare',
+        'Leaf-bare',
+        'Leaf-bare',
+    ]
+    moons = [
+        'New',
+        'Waxing',
+        'Half-waxing',
+        'Full',
+        'Half-waning',
+        'Waning'
     ]
 
     layouts = {
@@ -430,7 +450,8 @@ class Clan():
                  camp_bg=None,
                  game_mode='classic',
                  starting_members=[],
-                 starting_season='Newleaf'):
+                 starting_season='Newleaf',
+                 starting_moon = 'New'):
         self.history = History()
         if name == "":
             return
@@ -462,6 +483,8 @@ class Clan():
         self.age = 0
         self.current_season = 'Newleaf'
         self.starting_season = starting_season
+        self.current_moon = 'New'
+        self.starting_moon = starting_moon
         self.instructor = None
         # This is the first cat in starclan, to "guide" the other dead cats there.
         self.biome = biome
