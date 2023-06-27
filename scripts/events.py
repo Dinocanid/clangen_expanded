@@ -1712,6 +1712,7 @@ class Events:
         if not int(random.random() * game.get_config_value("death_related", f"{game.clan.game_mode}_death_chance")) \
                 and not cat.not_working():  # 1/400
             self.death_events.handle_deaths(cat, other_cat, game.clan.war["at_war"], enemy_clan, alive_kits)
+            print('DEAD ', cat.status)
             return True
         else:
             triggered_death = self.condition_events.handle_injuries(cat, other_cat, alive_kits, game.clan.war["at_war"],

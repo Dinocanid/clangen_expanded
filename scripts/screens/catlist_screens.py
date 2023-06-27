@@ -351,6 +351,9 @@ class ClanScreen(Screens):
             elif Cat.all_cats[x].status == 'kitten':
                 Cat.all_cats[x].placement = self.choose_nonoverlapping_positions(first_choices, all_dens,
                                                                                  [60, 8, 1, 1, 1, 1, 1])
+            elif Cat.all_cats[x].status == 'queen':
+                Cat.all_cats[x].placement = self.choose_nonoverlapping_positions(first_choices, all_dens,
+                                                                                 [60, 8, 1, 1, 1, 1, 1])
             elif Cat.all_cats[x].status in [
                 'medicine cat apprentice', 'medicine cat'
             ]:
@@ -1512,6 +1515,7 @@ class AllegiancesScreen(Screens):
         living_mediators = []
         living_warriors = []
         living_apprentices = []
+        living_queens = []
         living_kits = []
         living_elders = []
         for cat in living_cats:
@@ -1523,12 +1527,15 @@ class AllegiancesScreen(Screens):
                 living_mediators.append(cat)
             elif cat.status in ["apprentice", "medicine cat apprentice", "mediator apprentice"]:
                 living_apprentices.append(cat)
+            elif cat.status in ["queen"]:
+                living_queens.append(cat)
             elif cat.status in ["kitten", "newborn"]:
                 living_kits.append(cat)
             elif cat.status == "elder":
                 living_elders.append(cat)
-
-        # Find Queens:
+                
+        # Find queens, we can leave this as-is tbh
+        # FORMAT = {'queen.ID': [kitten object:ID]}
         queen_dict = {}
         for cat in living_kits.copy():
             parents = cat.get_parents()
@@ -1551,16 +1558,6 @@ class AllegiancesScreen(Screens):
                 else:
                     queen_dict[parents[1].ID] = [cat]
                     living_kits.remove(cat) 
-
-        # Remove queens from warrior or elder lists, if they are there.  Let them stay on any other lists. 
-        for q in queen_dict:
-            queen = Cat.fetch_cat(q)
-            if not queen:
-                continue
-            if queen in living_warriors:
-                living_warriors.remove(queen)
-            elif queen in living_elders:
-                living_elders.remove(queen)
             
         #Clan Leader Box:
         # Pull the Clan leaders
@@ -1623,13 +1620,14 @@ class AllegiancesScreen(Screens):
             outputs.append(_box)
         
          # Queens and Kits Box:
-        if queen_dict or living_kits:
+        if living_queens or living_kits:
             _box = ["", ""]
             _box[0] = '<b><u>QUEENS AND KITS</u></b>'
             
             # This one is a bit different.  First all the queens, and the kits they are caring for. 
             all_entries = []
             for q in queen_dict:
+                #print(f"QUEEN1: {queen_dict}")
                 queen = Cat.fetch_cat(q)
                 if not queen:
                     continue

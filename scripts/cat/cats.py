@@ -49,6 +49,7 @@ class Cat():
     rank_sort_order = [
         "newborn",
         "kitten",
+        "queen", # NEW!
         "elder",
         "apprentice",
         "warrior",
@@ -687,6 +688,9 @@ class Cat():
             pass
 
         elif self.status == 'mediator apprentice':
+            pass
+            
+        elif self.status == 'queen': # NEW!
             pass
 
         # update class dictionary

@@ -97,6 +97,7 @@ class Condition_Events():
         triggered = False
         text = None
         random_number = int(random.random() * game.get_config_value("condition_related", f"{game.clan.game_mode}_injury_chance"))
+        random_number_kit = int(random.random() * game.get_config_value("condition_related", f"{game.clan.game_mode}_injury_chance")) #EDIT TO INCLUDE QUEEN SKILLS LATER
 
         if cat.dead:
             triggered = True
@@ -128,6 +129,12 @@ class Condition_Events():
                                             "impulsive"] and \
                     random_number <= 15:
                 triggered = True
+                
+            elif not triggered and \
+                    cat.status in ["newborn", "kitten"] and \
+                    random_number <= 5:
+                triggered = True
+                print(f'{random_number} NOT DEAD, JUST INJURED | {cat.status}')
             elif not triggered and random_number <= 5:
                 triggered = True
 
