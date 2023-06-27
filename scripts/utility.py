@@ -188,6 +188,12 @@ def change_clan_reputation(difference):
     will change the Clan's reputation with outsider cats according to the difference parameter.
     """
     game.clan.reputation += difference
+    
+def change_clan_alignment(difference):
+    """
+    will change the Clan's reputation with StarClan according to the difference parameter.
+    """
+    game.clan.alignment += difference
 
 
 def change_clan_relations(other_clan, difference):

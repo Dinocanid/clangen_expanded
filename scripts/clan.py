@@ -477,6 +477,13 @@ class Clan():
         """
         self._reputation = 80
         
+        """
+        Alignment is for StarClan and Dark Forest encounters. 
+        It's a range from 1-100, with 26-74 being neutral, 75-100 being StarClan-aligned,
+        and 1-25 being Dark Forest-aligned. If you're hostile to StarClan, they will VERY RARELY show up.
+        """
+        self.alignment = 75
+        
         self.starting_members = starting_members
         if game_mode in ['expanded', 'cruel season']:
             self.freshkill_pile = Freshkill_Pile()
@@ -731,6 +738,7 @@ class Clan():
             "camp_bg": self.camp_bg,
             "gamemode": self.game_mode,
             "instructor": self.instructor.ID,
+            "alignment": self.alignment,
             "reputation": self.reputation,
             "mediated": game.mediated,
             "starting_season": self.starting_season,

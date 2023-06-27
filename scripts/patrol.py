@@ -12,6 +12,7 @@ from scripts.utility import (
     event_text_adjust,
     change_clan_relations,
     change_clan_reputation,
+    change_clan_alignment,
     change_relationship_values, create_new_cat,
     create_outside_cat,
     get_personality_compatibility,
@@ -304,7 +305,33 @@ class Patrol():
                 possible_patrols.extend(self.generate_patrol_events(self.OTHER_CLAN_ALLIES))
             elif clan_hostile:
                 possible_patrols.extend(self.generate_patrol_events(self.OTHER_CLAN_HOSTILE))
-
+                
+        # DARK FOREST TESTING
+        ghost_check = randint(1, 100) # first roll a random number
+        # modify based on alignment
+        if game.clan.alignment <= 25:
+            ghost_check -= 30
+        elif game.clan.alignment <= 74 and game.clan.alignment >= 26:
+            pass # you're neutral, WYSIWYG
+        elif game.clan.alignment >= 75:
+            ghost_check += 30
+            
+        # uh, gotta clamp this
+        if ghost_check > 100:
+            ghost_check = 100
+        elif ghost_check < 1:
+            ghost_check = 1
+        # print baybeeeee
+        print(f'Roll: {ghost_check}, Alignment: {game.clan.alignment}')
+        # now handle dark forest encounters. We had to split the medcat patrol dicts
+        if ghost_check <= 25:
+            possible_patrols.extend(self.generate_patrol_events(self.MEDCAT_DF))
+        elif ghost_check <= 74 and ghost_check >= 26:
+            possible_patrols.extend(self.generate_patrol_events(self.MEDCAT_DF))
+            possible_patrols.extend(self.generate_patrol_events(self.MEDCAT_STARCLAN))
+        elif ghost_check >= 75:
+            possible_patrols.extend(self.generate_patrol_events(self.MEDCAT_STARCLAN))
+        
         final_patrols, final_romance_patrols = self.filter_patrols(possible_patrols, biome, patrol_size, current_season,
                                                                    patrol_type)
 
@@ -769,11 +796,15 @@ class Patrol():
             image_name = image_name.replace("fst_", "gen_")
             image_name = image_name.replace("mtn_", "gen_")
             image_name = image_name.replace("pln_", "gen_")
+            image_name = image_name.replace("plains_", "gen_") #TEMP FIX
             image_name = image_name.replace("bch_", "gen_")
             if file_exists(f"{path}{image_name}.png"):
                 self.patrol_art = pygame.image.load(
                             f"{path}{image_name}.png").convert_alpha()
                 return
+            print(image_name)
+        else:
+            print(image_name)
     
         image_name = 'train'
         if self.patrol_event.patrol_id.find('med') != -1:
@@ -995,6 +1026,16 @@ class Patrol():
                         self.handle_reputation(-20)
                     else:
                         self.handle_reputation(10)
+                if any("starclan" in ptrltag for ptrltag in self.patrol_event.tags):
+                    if antagonize:
+                        self.handle_alignment(-10)
+                    else:
+                        self.handle_alignment(10)
+                if any("dark_forest" in ptrltag for ptrltag in self.patrol_event.tags):
+                    if antagonize:
+                        self.handle_alignment(10)
+                    else:
+                        self.handle_alignment(-10)
 
             self.handle_mentor_app_pairing()
             self.handle_relationships()
@@ -1567,6 +1608,12 @@ class Patrol():
         self.MEDCAT = None
         with open(f"{resource_dir}{biome_dir}med/any.json", 'r', encoding='ascii') as read_file:
             self.MEDCAT = ujson.loads(read_file.read())
+        self.MEDCAT_DF = None
+        with open(f"{resource_dir}/general/medcat_df.json", 'r', encoding='ascii') as read_file:
+            self.MEDCAT_DF = ujson.loads(read_file.read())
+        self.MEDCAT_STARCLAN = None
+        with open(f"{resource_dir}/general/medcat_starclan.json", 'r', encoding='ascii') as read_file:
+            self.MEDCAT_STARCLAN = ujson.loads(read_file.read())
         # NEW CAT #
         self.NEW_CAT = None
         with open(f"{resource_dir}new_cat.json", 'r', encoding='ascii') as read_file:
@@ -2143,6 +2190,22 @@ class Patrol():
             insert = "worsened"
         #print("REP: " + int(game.clan.reputation))
         self.results_text.append(f"Your Clan's reputation towards Outsiders has {insert}.")
+    
+    def handle_alignment(self, difference):
+        """
+        reputation with starclan/dark forest
+        """
+        if "no_change_fail_rep" in self.patrol_event.tags and not self.success:
+            difference = 0
+        change_clan_alignment(difference)
+        if difference > 0:
+            insert = "improved"
+        elif difference == 0:
+            insert = "remained neutral"
+        else:
+            insert = "worsened"
+        #print("REP: " + int(game.clan.reputation))
+        self.results_text.append(f"Your Clan's connection with StarClan has {insert}.")
 
     def handle_relationships(self):
         n = 5
