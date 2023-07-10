@@ -11,7 +11,74 @@ from ..game_structure import image_cache
 from scripts.event_class import Single_Event
 from scripts.game_structure.windows import GameOver
 
+# ---------------------------------------------------------------------------- #
+#                           gathering screen                                    #
+# ---------------------------------------------------------------------------- #
+class GatheringScreen(Screens):
 
+    def __init__(self, name=None):
+        super().__init__(name)
+        self.back_button = None
+        self.text = None
+        self.scroll_container = None
+        self.life_text = None
+        self.header = None
+        self.the_cat = None
+
+    def screen_switches(self):
+        self.gathering_type = game.switches['gathering']
+        self.hide_menu_buttons()
+        self.the_cat = Cat.all_cats.get(game.switches['cat'])
+        
+        if self.gathering_type == 'clan':
+            self.header = pygame_gui.elements.UITextBox('Clan Gathering',
+                                                        scale(pygame.Rect((200, 180), (1200, -1))),
+                                                        object_id=get_text_box_theme(), manager=MANAGER)
+        elif self.gathering_type == 'medcat':
+            self.header = pygame_gui.elements.UITextBox('Medicine Cat Gathering',
+                                                        scale(pygame.Rect((200, 180), (1200, -1))),
+                                                        object_id=get_text_box_theme(), manager=MANAGER)
+        self.gathering_text = "Testing! Will fill with stuff soon!"
+
+        self.scroll_container = pygame_gui.elements.UIScrollingContainer(scale(pygame.Rect((100, 300), (1400, 1000))))
+        self.text = pygame_gui.elements.UITextBox(self.gathering_text,
+                                                  scale(pygame.Rect((0, 0), (1100, -1))),
+                                                  object_id=get_text_box_theme("#text_box_30_horizleft"),
+                                                  container=self.scroll_container, manager=MANAGER)
+        self.text.disable()
+        self.back_button = UIImageButton(scale(pygame.Rect((50, 50), (210, 60))), "",
+                                         object_id="#back_button", manager=MANAGER)
+        self.scroll_container.set_scrollable_area_dimensions((1360 / 1600 * screen_x, self.text.rect[3]))
+
+    def exit_screen(self):
+        self.header.kill()
+        del self.header
+        self.text.kill()
+        del self.text
+        self.scroll_container.kill()
+        del self.scroll_container
+        self.back_button.kill()
+        del self.back_button
+
+    def on_use(self):
+        pass
+
+    def handle_event(self, event):
+        if game.switches['window_open']:
+            pass
+        if event.type == pygame_gui.UI_BUTTON_START_PRESS:
+            if event.ui_element == self.back_button:
+                self.change_screen('events screen')
+        
+        elif event.type == pygame.KEYDOWN and game.settings['keybinds']:
+            if event.key == pygame.K_ESCAPE:
+                self.change_screen('events screen')
+        return
+
+
+# ---------------------------------------------------------------------------- #
+#                           events screen                                    #
+# ---------------------------------------------------------------------------- #
 class EventsScreen(Screens):
     event_display_type = "all events"
     all_events = ""
@@ -242,8 +309,14 @@ class EventsScreen(Screens):
             elif event.ui_element in self.cat_profile_buttons:
                 game.switches['cat'] = event.ui_element.ids
                 self.change_screen('profile screen')
+            
+            elif event.ui_element == self.gathering_button:
+                print('open gathering screen!')
+                self.change_screen('gathering screen')
             else:
                 self.menu_button_pressed(event)
+            
+                
         elif event.type == pygame.KEYDOWN and game.settings['keybinds']:
             if event.key == pygame.K_RIGHT:
                 self.change_screen('camp screen')
@@ -417,6 +490,8 @@ class EventsScreen(Screens):
 
                 self.update_events_display()
                 self.show_menu_buttons()
+                
+            
             
 
     def screen_switches(self):
@@ -430,7 +505,7 @@ class EventsScreen(Screens):
                                                      scale(pygame.Rect((200, 220), (1200, 80))),
                                                      object_id=get_text_box_theme("#text_box_30_horizcenter"),
                                                      manager=MANAGER)
-        self.season = pygame_gui.elements.UITextBox(f'Current season: {game.clan.current_season}',
+        self.season = pygame_gui.elements.UITextBox(f'Current season: {game.clan.current_season} | Current turn: {game.clan.turns}',
                                                     scale(pygame.Rect((200, 280), (1200, 80))),
                                                     object_id=get_text_box_theme("#text_box_30_horizcenter"),
                                                     manager=MANAGER)
@@ -612,7 +687,7 @@ class EventsScreen(Screens):
 
     def update_events_display(self):
 
-        self.season.set_text(f'Current season: {game.clan.current_season}')
+        self.season.set_text(f'Current season: {game.clan.current_season} | Current turn: {game.clan.turns}')
         if game.clan.age == 1:
             self.clan_age.set_text(f'Clan age: {game.clan.age} moon')
         if game.clan.age != 1:
@@ -674,11 +749,20 @@ class EventsScreen(Screens):
 
                 y += self.display_events_elements["event" + str(i)].get_relative_rect()[3]
 
-                self.involved_cat_buttons.append(IDImageButton(pygame.Rect(
-                    (self.event_container.get_relative_rect()[2] - button_padding, y - 10), (button_size, button_size)),
-                    ids=ev.cats_involved, container=self.event_container, layer_starting_height=2,
-                    object_id="#events_cat_button", manager=MANAGER))
-
+                if ev.gathering == None:         
+                    self.involved_cat_buttons.append(IDImageButton(pygame.Rect(
+                        (self.event_container.get_relative_rect()[2] - button_padding, y - 10), (button_size, button_size)),
+                        ids=ev.cats_involved, container=self.event_container, layer_starting_height=2,
+                        object_id="#events_cat_button", manager=MANAGER))
+                else:
+                    game.switches['gathering'] = ev.gathering
+                    self.gathering_button = UIImageButton(
+                        pygame.Rect(
+                            (330, y-10), (153, 30)
+                        ),
+                        "", container=self.event_container, object_id="#view_gathering_button", manager=MANAGER
+                    )
+                
                 y += 68/1600 * screen_y
                 i += 1
             else:
@@ -742,6 +826,7 @@ class EventsScreen(Screens):
             for ele in self.cat_profile_buttons:
                 ele.kill()
             self.cat_profile_buttons = []
+
 
     def update_display_events_lists(self):
         """

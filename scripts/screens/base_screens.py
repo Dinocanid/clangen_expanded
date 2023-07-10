@@ -234,8 +234,12 @@ class Screens():
             moon_image_id = '#mns_image_moon_waxing'
         elif game.clan.current_moon == 'Half-waxing':
             moon_image_id = '#mns_image_moon_half_waxing'
+        elif game.clan.current_moon == 'Waxing-gibbous':
+            moon_image_id = '#mns_image_moon_waxing_gibbous'
         elif game.clan.current_moon == 'Half-waning':
             moon_image_id = '#mns_image_moon_half_waning'
+        elif game.clan.current_moon == 'Waning-gibbous':
+            moon_image_id = '#mns_image_moon_waning_gibbous'
         elif game.clan.current_moon == 'Half':
             moon_image_id = '#mns_image_moon_half'
         elif game.clan.current_moon == 'Full':
@@ -314,8 +318,12 @@ class Screens():
             moon_image_id = '#mns_image_moon_waxing'
         elif game.clan.current_moon == 'Half-waxing':
             moon_image_id = '#mns_image_moon_half_waxing'
+        elif game.clan.current_moon == 'Waxing-gibbous':
+            moon_image_id = '#mns_image_moon_waxing_gibbous'
         elif game.clan.current_moon == 'Half-waning':
             moon_image_id = '#mns_image_moon_half_waning'
+        elif game.clan.current_moon == 'Waning-gibbous':
+            moon_image_id = '#mns_image_moon_waning_gibbous'
         elif game.clan.current_moon == 'Half':
             moon_image_id = '#mns_image_moon_half'
         elif game.clan.current_moon == 'Full':

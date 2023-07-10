@@ -170,14 +170,14 @@ def get_current_season():
 
     modifiers = {
         "Newleaf": 0,
-        "Greenleaf": 6,
-        "Leaf-fall": 12,
-        "Leaf-bare": 18
+        "Greenleaf": 3,
+        "Leaf-fall": 6,
+        "Leaf-bare": 9
     }
     index = game.clan.age % 12 + modifiers[game.clan.starting_season]
 
-    if index > 17:
-        index = index - 18
+    if index > 11:
+        index = index - 12
 
     game.clan.current_season = game.clan.seasons[index]
 
@@ -185,26 +185,11 @@ def get_current_season():
     
 def get_current_moon():
     """
-    function to handle the math for finding the Clan's current moon phase
+    function for finding the Clan's current moon phase; this is easy since we're using simple turns
     :return: the Clan's current moon phase
     """
 
-    modifiers = {
-        "New": 0,
-        "Waxing": 1,
-        "Half-waxing": 2,
-        "Full": 3,
-        "Half-waning": 4,
-        "Waning": 5,
-    }
-    index = game.clan.age % 6 + modifiers[game.clan.starting_moon]
-
-    if index > 5:
-        index = index - 6
-
-    game.clan.current_moon = game.clan.moons[index]
-    print(game.clan.current_moon)
-
+    game.clan.current_moon = game.clan.moons[game.clan.turns]
     return game.clan.current_moon
 
 def change_clan_reputation(difference):

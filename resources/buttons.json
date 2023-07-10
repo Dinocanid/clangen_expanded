@@ -243,6 +243,52 @@
             }
         }
     },
+	"#mns_image_moon_waning_gibbous": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/icon_moon_waning_gibbous.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/icon_moon_waning_gibbous.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/icon_moon_waning_gibbous.png"
+            },
+            "disabled_image":
+            {
+                "path":"resources/images/icon_moon_waning_gibbous.png"
+            }
+        }
+    },
+	"#mns_image_moon_waxing_gibbous": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/icon_moon_waxing_gibbous.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/icon_moon_waxing_gibbous.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/icon_moon_waxing_gibbous.png"
+            },
+            "disabled_image":
+            {
+                "path":"resources/images/icon_moon_waxing_gibbous.png"
+            }
+        }
+    },
 	"#mns_image_moon_waxing": 
     {
         "prototype": "#image_button",
@@ -993,6 +1039,29 @@
             "disabled_image":
             {
                 "path":"resources/images/buttons/save_clan_unavailable.png"
+            }
+        }
+    },
+	"#view_gathering_button": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/buttons/view_gathering.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/buttons/view_gathering_hover.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/buttons/view_gathering_hover.png"
+            },
+            "disabled_image":
+            {
+                "path": "resources/images/buttons/view_gathering.png"
             }
         }
     },
