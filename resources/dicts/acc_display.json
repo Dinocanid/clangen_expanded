@@ -418,5 +418,80 @@
     "default": "indigo nylon collar",
     "plural": "indigo nylon collars",
     "singular": "indigo nylon collar"
+  },
+  "CRIMSONTEETH": {
+    "default": "crimson tooth collar",
+    "plural": "crimson tooth collars",
+    "singular": "crimson tooth collar"
+  },
+  "BLUETEETH": {
+    "default": "blue tooth collar",
+    "plural": "blue tooth collars",
+    "singular": "blue tooth collar"
+  },
+  "CYANTEETH": {
+    "default": "cyan tooth collar",
+    "plural": "cyan tooth collars",
+    "singular": "cyan tooth collar"
+  },
+  "YELLOWTEETH": {
+    "default": "yellow tooth collar",
+    "plural": "yellow tooth collars",
+    "singular": "yellow tooth collar"
+  },
+  "LIMETEETH": {
+    "default": "lime tooth collar",
+    "plural": "lime tooth collars",
+    "singular": "lime tooth collar"
+  },
+  "GREENTEETH": {
+    "default": "green tooth collar",
+    "plural": "green tooth collars",
+    "singular": "green tooth collar"
+  },
+  "REDTEETH": {
+    "default": "red tooth collar",
+    "plural": "red tooth collars",
+    "singular": "red tooth collar"
+  },
+  "RAINBOWTEETH": {
+    "default": "rainbow tooth collar",
+    "plural": "rainbow tooth collars",
+    "singular": "rainbow tooth collar"
+  },
+  "BLACKTEETH": {
+    "default": "black tooth collar",
+    "plural": "black tooth collars",
+    "singular": "black tooth collar"
+  },
+  "SPIKESTEETH": {
+    "default": "spiky tooth collar",
+    "plural": "spiky tooth collars",
+    "singular": "spiky tooth collar"
+  },
+  "WHITETEETH": {
+    "default": "white tooth collar",
+    "plural": "white tooth collars",
+    "singular": "white tooth collar"
+  },
+  "PINKTEETH": {
+    "default": "pink tooth collar",
+    "plural": "pink tooth collars",
+    "singular": "pink tooth collar"
+  },
+  "PURPLETEETH": {
+    "default": "purple tooth collar",
+    "plural": "purple tooth collars",
+    "singular": "purple tooth collar"
+  },
+  "MULTITEETH": {
+    "default": "lilac tooth collar",
+    "plural": "lilac tooth collars",
+    "singular": "lilac tooth collar"
+  },
+  "INDIGOTEETH": {
+    "default": "indigo tooth collar",
+    "plural": "indigo tooth collars",
+    "singular": "indigo tooth collar"
   }
 }

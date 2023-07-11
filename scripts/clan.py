@@ -498,6 +498,7 @@ class Clan():
         # Used to pass time, let's hope this works
         self.turns = 0
         
+        
         """
         Reputation is for loners/kittypets/outsiders in general that wish to join the clan. 
         it's a range from 1-100, with 30-70 being neutral, 71-100 being "welcoming",
@@ -547,6 +548,11 @@ class Clan():
         self.add_cat(self.instructor)
         self.add_to_starclan(self.instructor)
         self.all_clans = []
+        
+        if self.instructor.df is False:
+            self.alignment = 75
+        else:
+            self.alignment = 25
 
         key_copy = tuple(Cat.all_cats.keys())
         for i in key_copy:  # Going through all currently existing cats

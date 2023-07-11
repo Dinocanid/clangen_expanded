@@ -32,6 +32,7 @@ from scripts.game_structure.game_essentials import game, screen, screen_x, scree
 from scripts.game_structure.windows import DeleteCheck, UpdateAvailablePopup, ChangelogPopup, SaveError
 from scripts.game_structure.discord_rpc import _DiscordRPC
 from scripts.game_structure import image_cache
+from scripts.game_structure.sound_manager import sound_manager
 from ..housekeeping.datadir import get_data_dir, get_cache_dir
 from ..housekeeping.update import has_update, UpdateChannel, get_latest_version_number
 
@@ -74,6 +75,7 @@ class StartScreen(Screens):
                 self.settings_button: 'settings screen',
             }
             if event.ui_element in screens:
+                sound_manager.play("confirm")
                 self.change_screen(screens[event.ui_element])
             elif event.ui_element == self.open_data_directory_button:
                 if platform.system() == 'Darwin':
