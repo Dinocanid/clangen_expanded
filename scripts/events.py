@@ -1773,8 +1773,8 @@ class Events:
         """
         TODO: DOCS
         """
-
-        if int(random.random() * 40):
+        hit = int(random.random() * 30)
+        if hit:
             return
 
         other_cat = random.choice(list(Cat.all_cats.values()))
