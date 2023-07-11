@@ -1,3 +1,5 @@
+![cgex banner](https://github.com/Dinocanid/clangen_expanded/assets/20864790/ecc1c048-1232-4a0c-8881-76c9cf12b624)
+
 # CGex (Clangen Expanded)
 
 ### [Clangen Discord Server](https://discord.gg/rnFQqyPZ7K)
