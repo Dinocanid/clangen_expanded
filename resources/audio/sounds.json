@@ -1,0 +1,10 @@
+{
+	"confirm": {
+		"name": "confirm",
+		"path": "resources/audio/confirm.wav"
+	},
+	"click": {
+		"name": "click",
+		"path": "resources/audio/click.wav"
+	}
+}

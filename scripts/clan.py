@@ -483,10 +483,6 @@ class Clan():
         It's a range from 1-100, with 26-74 being neutral, 75-100 being StarClan-aligned,
         and 1-25 being Dark Forest-aligned. If you're hostile to StarClan, they will VERY RARELY show up.
         """
-        if game.clan.instructor.df is False:
-            self.alignment = 75
-        else:
-            self.alignment = 25
         
         self.starting_members = starting_members
         if game_mode in ['expanded', 'cruel season']:
@@ -523,6 +519,11 @@ class Clan():
         self.add_cat(self.instructor)
         self.add_to_starclan(self.instructor)
         self.all_clans = []
+        
+        if self.instructor.df is False:
+            self.alignment = 75
+        else:
+            self.alignment = 25
 
         key_copy = tuple(Cat.all_cats.keys())
         for i in key_copy:  # Going through all currently existing cats

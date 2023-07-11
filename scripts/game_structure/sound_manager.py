@@ -24,12 +24,7 @@ class _SoundManager():
 
         for sound in sound_data:
             try:
-                if "name" in sound:
-                    self.sounds[sound["name"]] = pygame.mixer.Sound(
-                        sound["path"])
-                else:
-                    self.sounds[sound["path"]] = pygame.mixer.Sound(
-                        sound["path"])
+                self.sounds[sound_data[sound]["name"]] = pygame.mixer.Sound(sound_data[sound]["path"])
             except:
                 logger.exception("Failed to load sound")
 

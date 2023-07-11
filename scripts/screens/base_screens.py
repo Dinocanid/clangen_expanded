@@ -5,6 +5,7 @@ from scripts.cat.cats import Cat
 from scripts.clan import Clan
 from scripts.game_structure.game_essentials import game, screen, screen_x, screen_y, MANAGER
 from scripts.game_structure import image_cache
+from scripts.game_structure.sound_manager import sound_manager
 from scripts.game_structure.image_button import UIImageButton
 import pygame_gui
 from scripts.game_structure.windows import SaveCheck
@@ -162,6 +163,7 @@ class Screens():
     def menu_button_pressed(self, event):
         """This is a short-up to deal with menu button presses.
             This will fail if event.type != pygame_gui.UI_BUTTON_START_PRESS"""
+        sound_manager.play("click")
         if game.switches['window_open']:
             pass
         elif event.ui_element == self.menu_buttons["events_screen"]:
