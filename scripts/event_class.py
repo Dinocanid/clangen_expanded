@@ -11,11 +11,15 @@ TODO: Docs
 class Single_Event():
     """A class to hold info regarding a single event """
 
-    def __init__(self, text, types=None, cats_involved=None):
-        """ text: The event text.
+    def __init__(self, text, types=None, cats_involved=None, gathering=None):
+        """ 
+        text: The event text.
         types: Which types of event, in a list or tuple. Current options are:
                 "relation", "ceremony", "birth_death", "health", "other_clans", "misc"
-        cat_involved: list or tuples of the IDs of cats involved in the event """
+        cat_involved: list or tuples of the IDs of cats involved in the event 
+        gathering: The type of gathering. The options are:
+                "medcat", "clan"
+        """
 
         self.text = text
 
@@ -35,6 +39,10 @@ class Single_Event():
             self.cats_involved = list(cats_involved)
         else:
             self.cats_involved = []
+            
+        if isinstance(gathering, str):
+            self.gathering = gathering
+        else: self.gathering = None
 
     def to_dict(self):
         """
@@ -44,7 +52,8 @@ class Single_Event():
         return {
             "text": self.text,
             "types": self.types,
-            "cats_involved": self.cats_involved
+            "cats_involved": self.cats_involved,
+            "gathering": self.gathering
         }
 
     @staticmethod
@@ -60,5 +69,6 @@ class Single_Event():
         return Single_Event(
             text=dict["text"],
             types=dict.get("types", None),
-            cats_involved=dict.get("cats_involved", None)
+            cats_involved=dict.get("cats_involved", None),
+            gathering=dict.get("gathering", None)
         )

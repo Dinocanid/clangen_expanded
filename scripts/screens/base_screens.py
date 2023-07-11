@@ -227,11 +227,31 @@ class Screens():
         else:
             moons_text = "moons"
             
+        # moon phases!
+        if game.clan.current_moon == 'New':
+            moon_image_id = '#mns_image_moon_new'
+        elif game.clan.current_moon == 'Waxing':
+            moon_image_id = '#mns_image_moon_waxing'
+        elif game.clan.current_moon == 'Half-waxing':
+            moon_image_id = '#mns_image_moon_half_waxing'
+        elif game.clan.current_moon == 'Waxing-gibbous':
+            moon_image_id = '#mns_image_moon_waxing_gibbous'
+        elif game.clan.current_moon == 'Half-waning':
+            moon_image_id = '#mns_image_moon_half_waning'
+        elif game.clan.current_moon == 'Waning-gibbous':
+            moon_image_id = '#mns_image_moon_waning_gibbous'
+        elif game.clan.current_moon == 'Half':
+            moon_image_id = '#mns_image_moon_half'
+        elif game.clan.current_moon == 'Full':
+            moon_image_id = '#mns_image_moon_full'
+        elif game.clan.current_moon == 'Waning':
+            moon_image_id = '#mns_image_moon_waning'
+            
         self.moons_n_seasons_moon = UIImageButton(
             scale(pygame.Rect((28, 21), (48, 48))),
             "",
             manager=MANAGER,
-            object_id="#mns_image_moon",
+            object_id=moon_image_id,
             container = self.menu_buttons['moons_n_seasons'])
         self.moons_n_seasons_text = pygame_gui.elements.UITextBox(
             f'{game.clan.age} {moons_text}',
@@ -280,17 +300,42 @@ class Screens():
             manager=MANAGER,
             object_id="#mns_bg_closed",
             container = self.menu_buttons['moons_n_seasons'])
-            
-        if game.clan.age == 1:
-            moons_text = "moon"
+        
+        if game.clan.current_moon == 'Half-waxing' or game.clan.current_moon == 'Half-waning':
+            fix_half_moons = 'Half'
         else:
-            moons_text = "moons"
+            fix_half_moons = game.clan.current_moon
+        
+        if game.clan.age == 1:
+            moons_text = "moon | " + fix_half_moons + " moon"
+        else:
+            moons_text = "moons | " + fix_half_moons + " moon"
+            
+        # moon phases!
+        if game.clan.current_moon == 'New':
+            moon_image_id = '#mns_image_moon_new'
+        elif game.clan.current_moon == 'Waxing':
+            moon_image_id = '#mns_image_moon_waxing'
+        elif game.clan.current_moon == 'Half-waxing':
+            moon_image_id = '#mns_image_moon_half_waxing'
+        elif game.clan.current_moon == 'Waxing-gibbous':
+            moon_image_id = '#mns_image_moon_waxing_gibbous'
+        elif game.clan.current_moon == 'Half-waning':
+            moon_image_id = '#mns_image_moon_half_waning'
+        elif game.clan.current_moon == 'Waning-gibbous':
+            moon_image_id = '#mns_image_moon_waning_gibbous'
+        elif game.clan.current_moon == 'Half':
+            moon_image_id = '#mns_image_moon_half'
+        elif game.clan.current_moon == 'Full':
+            moon_image_id = '#mns_image_moon_full'
+        elif game.clan.current_moon == 'Waning':
+            moon_image_id = '#mns_image_moon_waning'
         
         self.moons_n_seasons_moon = UIImageButton(
             scale(pygame.Rect((28, 21), (48, 48))),
             "",
             manager=MANAGER,
-            object_id="#mns_image_moon",
+            object_id=moon_image_id,
             container = self.menu_buttons['moons_n_seasons'],
             starting_height=2,
             tool_tip_text= f'{game.clan.age} {moons_text}')
