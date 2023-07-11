@@ -28,7 +28,7 @@ class Condition_Events():
         self.scar_events = Scar_Events()
         self.generate_events = GenerateEvents()
 
-    def handle_illnesses(self, cat, season=None):
+    def handle_illnesses(self, cat, season=None, skiptype='moon'):
         """ 
         This function handles overall the illnesses in 'expanded' (or 'cruel season') game mode
         """
@@ -47,8 +47,10 @@ class Condition_Events():
             # ---------------------------------------------------------------------------- #
             #                              make cats sick                                  #
             # ---------------------------------------------------------------------------- #
-            random_number = int(
-                random.random() * game.get_config_value("condition_related", f"{game.clan.game_mode}_illness_chance"))
+            if skiptype == 'moon':
+                random_number = int(random.random() * game.get_config_value("condition_related", f"{game.clan.game_mode}_illness_chance"))
+            else:
+                random_number = int(random.random() * 800)
             if not cat.dead and not cat.is_ill() and random_number <= 10 and not event_string:
                 season_dict = ILLNESSES_SEASON_LIST[season]
                 possible_illnesses = []
@@ -88,7 +90,7 @@ class Condition_Events():
 
         return triggered
 
-    def handle_injuries(self, cat, other_cat=None, alive_kits=None, war=None, enemy_clan=None, season=None):
+    def handle_injuries(self, cat, other_cat=None, alive_kits=None, war=None, enemy_clan=None, season=None, skiptype='moon'):
         """ 
         This function handles overall the injuries in 'expanded' (or 'cruel season') game mode.
         Returns: boolean - if an event was triggered
@@ -96,9 +98,13 @@ class Condition_Events():
         has_other_clan = False
         triggered = False
         text = None
-        random_number = int(random.random() * game.get_config_value("condition_related", f"{game.clan.game_mode}_injury_chance"))
-        random_number_kit = int(random.random() * game.get_config_value("condition_related", f"{game.clan.game_mode}_injury_chance")) #EDIT TO INCLUDE QUEEN SKILLS LATER
 
+        if skiptype == 'moon':
+            random_number = int(random.random() * game.get_config_value("condition_related", f"{game.clan.game_mode}_injury_chance"))
+            random_number_kit = int(random.random() * game.get_config_value("condition_related", f"{game.clan.game_mode}_injury_chance")) #EDIT TO INCLUDE QUEEN SKILLS LATER
+        else:
+            random_number = int(random.random() * 800)
+        
         if cat.dead:
             triggered = True
             return triggered
@@ -107,11 +113,13 @@ class Condition_Events():
 
         # handle if the current cat is already injured
         if cat.is_injured() and game.clan.game_mode != 'classic':
+            #print("is THIS working???")
             for injury in cat.injuries:
                 if injury == 'pregnant':
                     return triggered
             triggered, event_string = self.handle_already_injured(cat)
             text = event_string
+            print(event_string)
         else:
             # EVENTS
 

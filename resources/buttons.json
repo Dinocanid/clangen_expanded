@@ -151,26 +151,210 @@
             }
         }
     },
-	"#mns_image_moon": 
+	"#mns_image_moon_full": 
     {
         "prototype": "#image_button",
 		"images":
         {
             "normal_image":
             {
-                "path": "resources/images/icon_moon.png"
+                "path": "resources/images/icon_moon_full.png"
             },
 			"hovered_image":
             {
-                "path": "resources/images/icon_moon.png"
+                "path": "resources/images/icon_moon_full.png"
             },
 			"selected_image":
             {
-                "path": "resources/images/icon_moon.png"
+                "path": "resources/images/icon_moon_full.png"
             },
             "disabled_image":
             {
-                "path":"resources/images/icon_moon.png"
+                "path": "resources/images/icon_moon_full.png"
+            }
+        }
+    },
+	"#mns_image_moon_new": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/icon_moon_new.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/icon_moon_new.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/icon_moon_new.png"
+            },
+            "disabled_image":
+            {
+                "path":"resources/images/icon_moon_new.png"
+            }
+        }
+    },
+	"#mns_image_moon_half": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/icon_moon_half.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/icon_moon_half.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/icon_moon_half.png"
+            },
+            "disabled_image":
+            {
+                "path":"resources/images/icon_moon_half.png"
+            }
+        }
+    },
+	"#mns_image_moon_waning": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/icon_moon_waning.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/icon_moon_waning.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/icon_moon_waning.png"
+            },
+            "disabled_image":
+            {
+                "path":"resources/images/icon_moon_waning.png"
+            }
+        }
+    },
+	"#mns_image_moon_waning_gibbous": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/icon_moon_waning_gibbous.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/icon_moon_waning_gibbous.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/icon_moon_waning_gibbous.png"
+            },
+            "disabled_image":
+            {
+                "path":"resources/images/icon_moon_waning_gibbous.png"
+            }
+        }
+    },
+	"#mns_image_moon_waxing_gibbous": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/icon_moon_waxing_gibbous.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/icon_moon_waxing_gibbous.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/icon_moon_waxing_gibbous.png"
+            },
+            "disabled_image":
+            {
+                "path":"resources/images/icon_moon_waxing_gibbous.png"
+            }
+        }
+    },
+	"#mns_image_moon_waxing": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/icon_moon_waxing.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/icon_moon_waxing.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/icon_moon_waxing.png"
+            },
+            "disabled_image":
+            {
+                "path":"resources/images/icon_moon_waxing.png"
+            }
+        }
+    },
+	"#mns_image_moon_half_waxing": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/icon_moon_half_waxing.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/icon_moon_half_waxing.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/icon_moon_half_waxing.png"
+            },
+            "disabled_image":
+            {
+                "path": "resources/images/icon_moon_half_waxing.png"
+            }
+        }
+    },
+	"#mns_image_moon_half_waning": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/icon_moon_half_waning.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/icon_moon_half_waning.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/icon_moon_half_waning.png"
+            },
+            "disabled_image":
+            {
+                "path":"resources/images/icon_moon_half_waning.png"
             }
         }
     },
@@ -855,6 +1039,29 @@
             "disabled_image":
             {
                 "path":"resources/images/buttons/save_clan_unavailable.png"
+            }
+        }
+    },
+	"#view_gathering_button": 
+    {
+        "prototype": "#image_button",
+		"images":
+        {
+            "normal_image":
+            {
+                "path": "resources/images/buttons/view_gathering.png"
+            },
+			"hovered_image":
+            {
+                "path": "resources/images/buttons/view_gathering_hover.png"
+            },
+			"selected_image":
+            {
+                "path": "resources/images/buttons/view_gathering_hover.png"
+            },
+            "disabled_image":
+            {
+                "path": "resources/images/buttons/view_gathering.png"
             }
         }
     },

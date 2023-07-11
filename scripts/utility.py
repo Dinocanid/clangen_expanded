@@ -182,6 +182,15 @@ def get_current_season():
     game.clan.current_season = game.clan.seasons[index]
 
     return game.clan.current_season
+    
+def get_current_moon():
+    """
+    function for finding the Clan's current moon phase; this is easy since we're using simple turns
+    :return: the Clan's current moon phase
+    """
+
+    game.clan.current_moon = game.clan.moons[game.clan.turns]
+    return game.clan.current_moon
 
 def change_clan_reputation(difference):
     """

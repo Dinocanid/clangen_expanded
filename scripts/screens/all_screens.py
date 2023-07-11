@@ -2,7 +2,7 @@ from .base_screens import Screens
 from .cat_screens import ProfileScreen, CeremonyScreen, RoleScreen, SpriteInspectScreen
 from .clan_creation_screens import MakeClanScreen
 from .catlist_screens import ClanScreen, StarClanScreen, DFScreen, ListScreen, AllegiancesScreen, MedDenScreen
-from .event_screens import EventsScreen
+from .event_screens import EventsScreen, GatheringScreen
 from .organizational_screens import\
     StartScreen, SettingsScreen, SwitchClanScreen, StatsScreen
 from .patrol_screens import PatrolScreen
@@ -64,6 +64,7 @@ med_den_screen = MedDenScreen('med den screen')
 # ---------------------------------------------------------------------------- #
 
 events_screen = EventsScreen('events screen')
+gathering_screen = GatheringScreen('gathering screen')
 
 # ---------------------------------------------------------------------------- #
 #                           organizational_screens.py                          #

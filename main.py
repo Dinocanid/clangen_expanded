@@ -130,6 +130,7 @@ from scripts.screens.all_screens import start_screen # pylint: disable=ungrouped
 # P Y G A M E
 clock = pygame.time.Clock()
 pygame.display.set_icon(pygame.image.load('resources/images/icon.png'))
+pygame.display.set_caption('ClanGen Expanded')
 
 # LOAD cats & clan
 clan_list = game.read_clans()

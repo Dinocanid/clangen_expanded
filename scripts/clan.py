@@ -23,7 +23,7 @@ import statistics
 
 from scripts.game_structure.game_essentials import game
 from scripts.housekeeping.version import get_version_info, SAVE_VERSION_NUMBER
-from scripts.utility import update_sprite, get_current_season, quit  # pylint: disable=redefined-builtin
+from scripts.utility import update_sprite, get_current_season, get_current_moon, quit  # pylint: disable=redefined-builtin
 from scripts.cat.cats import Cat, cat_class
 from scripts.cat.names import names
 from scripts.clan_resources.freshkill import Freshkill_Pile, Nutrition
@@ -70,7 +70,30 @@ class Clan():
         'Leaf-fall',
         'Leaf-bare',
         'Leaf-bare',
-        'Leaf-bare',
+        'Leaf-bare'
+    ]
+    
+    moons = [
+        'New',
+        'Waxing',
+        'Waxing',
+        'Waxing',
+        'Waxing',
+        'Half-waxing',
+        'Waxing-gibbous',
+        'Waxing-gibbous',
+        'Waxing-gibbous',
+        'Waxing-gibbous',
+        'Full',
+        'Waning-gibbous',
+        'Waning-gibbous',
+        'Waning-gibbous',
+        'Waning-gibbous',
+        'Half-waning',
+        'Waning',
+        'Waning',
+        'Waning',
+        'Waning'
     ]
 
     layouts = {
@@ -430,7 +453,8 @@ class Clan():
                  camp_bg=None,
                  game_mode='classic',
                  starting_members=[],
-                 starting_season='Newleaf'):
+                 starting_season='Newleaf',
+                 starting_moon = 'New'):
         self.history = History()
         if name == "":
             return
@@ -462,6 +486,8 @@ class Clan():
         self.age = 0
         self.current_season = 'Newleaf'
         self.starting_season = starting_season
+        self.current_moon = 'New'
+        self.starting_moon = starting_moon
         self.instructor = None
         # This is the first cat in starclan, to "guide" the other dead cats there.
         self.biome = biome
@@ -469,6 +495,8 @@ class Clan():
         self.game_mode = game_mode
         self.pregnancy_data = {}
         self.inheritance = {}
+        # Used to pass time, let's hope this works
+        self.turns = 0
         
         
         """
@@ -747,6 +775,8 @@ class Clan():
             "reputation": self.reputation,
             "mediated": game.mediated,
             "starting_season": self.starting_season,
+            "turns": self.turns,
+            "current_moon": self.current_moon,
             "temperament": self.temperament,
             "version_name": SAVE_VERSION_NUMBER,
             "version_commit": get_version_info().version_number,
@@ -941,6 +971,11 @@ class Clan():
             game.clan.current_season = game.clan.seasons[game.clan.age % 12]
         else:
             game.clan.current_season = game.clan.starting_season
+            
+        game.clan.turns = game.clan.turns
+        game.clan.current_moon = game.clan.moons[game.clan.turns]
+        
+        
         game.clan.leader_lives, game.clan.leader_predecessors = int(
             leader_info[1]), int(leader_info[2])
 
@@ -1035,6 +1070,11 @@ class Clan():
         game.clan.starting_season = clan_data[
             "starting_season"] if "starting_season" in clan_data else 'Newleaf'
         get_current_season()
+        
+        game.clan.turns = clan_data["turns"]
+        game.clan.current_moon = game.clan.moons[clan_data["turns"]]
+        get_current_moon()
+        print(clan_data)
 
         game.clan.leader_lives = leader_lives
         game.clan.leader_predecessors = clan_data["leader_predecessors"]

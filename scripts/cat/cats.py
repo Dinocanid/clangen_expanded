@@ -1220,6 +1220,27 @@ class Cat():
 
         if self.status in ['apprentice', 'mediator apprentice', 'medicine cat apprentice']:
             self.update_mentor()
+            
+    def one_turn(self):
+        """Handles a turn skip for an alive cat. """
+        
+        self.in_camp = 1
+        if self.exiled or self.outside:
+            # this is handled in events.py
+            self.personality.set_kit(self.is_baby())
+            self.thoughts()
+            return
+
+        if self.dead:
+            self.thoughts()
+            return
+        
+        # Set personality to correct type
+        self.personality.set_kit(self.is_baby())
+        # Upon age-change
+
+        if self.status in ['apprentice', 'mediator apprentice', 'medicine cat apprentice']:
+            self.update_mentor()
 
     def thoughts(self):
         """ Generates a thought for the cat, which displays on their profile. """
@@ -1347,14 +1368,21 @@ class Cat():
                     game.cur_events_list.append(Single_Event(text, ["birth_death", "health"], game.clan.leader.ID))
             self.die()
             return False
-
-        moons_with = game.clan.age - self.illnesses[illness]["moon_start"]
-
+        
+        long_ouch = ['constant nightmares']
+        turn_heal_chance = randint(1, 5)
+        if illness in long_ouch:
+            moons_with = game.clan.age - self.illnesses[illness]["moon_start"]
+        elif illness == 'grief stricken':
+            moons_with = game.clan.age - self.illnesses[illness]["moon_start"] + turn_heal_chance # this is a special case, because it takes too long otherwise
+        else:
+            moons_with = self.illnesses[illness]["moon_start"] + turn_heal_chance
         if self.illnesses[illness]["duration"] - moons_with <= 0:
             self.healed_condition = True
             return False
 
     def moon_skip_injury(self, injury):
+        #print("injury is working per turn")
         """handles the moon skip for injury"""
         if not self.is_injured():
             return True
@@ -1376,8 +1404,16 @@ class Cat():
                 game.clan.leader_lives -= 1
             self.die()
             return False
-
-        moons_with = game.clan.age - self.injuries[injury]["moon_start"]
+        
+        
+        long_ouch = ['broken jaw', 'broken bone', 'broken back', 'mangled leg', 'mangled tail', 'severe burn', 'lingering shock', 'redcough', 'pregnant']
+        turn_heal_chance = randint(1, 5)
+        if injury in long_ouch:
+            moons_with = game.clan.age - self.injuries[injury]["moon_start"]
+        elif injury == 'grief stricken':
+            moons_with = game.clan.age - self.injuries[injury]["moon_start"] + turn_heal_chance 
+        else:
+            moons_with = self.injuries[injury]["moon_start"] + turn_heal_chance # these shouldn't take months to heal, so heal it within turns
 
         # if the cat has an infected wound, the wound shouldn't heal till the illness is cured
         if not self.injuries[injury]["complication"] and self.injuries[injury]["duration"] - moons_with <= 0:
