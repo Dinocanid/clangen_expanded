@@ -109,6 +109,7 @@ class EventsScreen(Screens):
         self.events_list_box = None
         self.toggle_borders_button = None
         self.timeskip_button = None
+        self.gathering_button = None
         self.events_frame = None
         self.clan_age = None
         self.season = None
