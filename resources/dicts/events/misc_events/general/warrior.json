@@ -5,6 +5,63 @@
             "Leaf-bare",
             "Newleaf",
             "Greenleaf",
+            "Leaf-fall"
+        ],
+        "event_text": "m_c was found sneaking prey before anyone else.",
+		"cat_trait": [
+            "sneaky",
+            "daring",
+			"cunning",
+			"troublesome",
+			"rebellious"
+        ]
+    },
+	{
+        "camp": "any",
+        "tags": [
+            "Leaf-bare",
+            "Newleaf",
+            "Greenleaf",
+            "Leaf-fall"
+        ],
+        "event_text": "Loudly hissing that {PRONOUN/m_c/subject} {VERB/m_c/are/is} hungry and need to eat now, m_c pushes past everyone else before snatching a piece of prey.",
+		"cat_trait": [
+            "fierce",
+            "daring",
+			"bold",
+			"troublesome",
+			"shameless",
+			"arrogant",
+			"grumpy",
+			"rebellious"
+        ]
+    },
+	{
+        "camp": "any",
+        "tags": [
+			"clan_kits",
+            "Leaf-bare",
+            "Newleaf",
+            "Greenleaf",
+            "Leaf-fall"
+        ],
+        "event_text": "While lounging in the clearing, m_c is startled by a snake and quickly flees with a yowl——abandoning the kits that were playing nearby.",
+		"negate_cat_trait": [
+            "righteous",
+            "responsible",
+            "thoughtful",
+            "confident",
+            "bold",
+			"daring"
+			
+        ]
+    },
+    {
+        "camp": "any",
+        "tags": [
+            "Leaf-bare",
+            "Newleaf",
+            "Greenleaf",
             "Leaf-fall",
             "other_cat",
             "other_cat_warrior"

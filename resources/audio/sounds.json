@@ -6,5 +6,13 @@
 	"click": {
 		"name": "click",
 		"path": "resources/audio/click.wav"
+	},
+	"forest": {
+		"name": "forest",
+		"path": "resources/audio/forest.wav"
+	},
+	"mysterious": {
+		"name": "mysterious",
+		"path": "resources/audio/mysterious.ogg"
 	}
 }

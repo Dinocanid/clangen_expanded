@@ -2,7 +2,7 @@
 	"freshkill":{
 		"activate_death": false,
 		"activate_events": false,
-		"start_amount": 60,
+		"start_amount": 100,
 		"auto_warrior_prey": [1,3],
 		"auto_apprentice_prey": [1,2],
 		"condition_increase": 1,

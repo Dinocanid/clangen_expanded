@@ -1,13 +1,22 @@
 [
-    {
+
+	{
         "camp": "any",
         "tags": [
+            "Leaf-bare",
             "Newleaf",
             "Greenleaf",
-            "Leaf-fall",
-            "Leaf-bare"
+            "Leaf-fall"
         ],
-        "event_text": "m_c is caught breaking the Warrior Code."
+        "event_text": "m_c is found playing with a piece of prey, messy and heavily battered by paws.",
+		"cat_trait": [
+            "troublesome",
+            "bloodthirsty",
+			"cold",
+			"childish",
+			"playful",
+			"strange"
+        ]
     },
     {
         "camp": "any",

@@ -73,6 +73,8 @@ class StartScreen(Screens):
             }
             if event.ui_element in screens:
                 sound_manager.play("confirm")
+                if screens[event.ui_element]== 'camp screen':
+                    sound_manager.stop('mysterious')
                 self.change_screen(screens[event.ui_element])
             elif event.ui_element == self.open_data_directory_button:
                 if platform.system() == 'Darwin':
@@ -117,6 +119,7 @@ class StartScreen(Screens):
                     subprocess.Popen(['xdg-open', "https://twitter.com/OfficialClangen"])
         elif event.type == pygame.KEYDOWN and game.settings['keybinds']:
             if (event.key == pygame.K_RETURN or event.key == pygame.K_SPACE) and self.continue_button.is_enabled:
+                sound_manager.stop()
                 self.change_screen('camp screen')
 
     def on_use(self):
@@ -325,6 +328,7 @@ class StartScreen(Screens):
 
         # LOAD settings
         game.load_settings()
+        sound_manager.play("mysterious")
 
 
 class SwitchClanScreen(Screens):

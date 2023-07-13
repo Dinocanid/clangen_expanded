@@ -31,12 +31,23 @@ class _SoundManager():
         self._volume = volume
 
     def play(self, sound):
+        if pygame.mixer.get_busy():
+            pass
+        else:
+            try:
+                pygame.mixer.Sound.play(self.sounds[sound])
+            except KeyError:
+                logger.exception(f"Could not find sound {sound}")
+            except:
+                logger.exception(f"Could not play sound {sound}")
+            
+    def stop(self, sound):
         try:
-            pygame.mixer.Sound.play(self.sounds[sound])
+            pygame.mixer.Sound.stop(self.sounds[sound])
         except KeyError:
             logger.exception(f"Could not find sound {sound}")
         except:
-            logger.exception(f"Could not play sound {sound}")
+            logger.exception(f"Could not stop sound {sound}")
 
     @property
     def volume(self):
