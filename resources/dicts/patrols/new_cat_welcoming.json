@@ -5,7 +5,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_loner_warrior_litter1",
+            "new_cat_loner_apprentice_adult_litter1",
             "reputation",
             "no_change_fail_rep",
             "meeting"
@@ -35,7 +35,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_loner_warrior_litter1",
+            "new_cat_loner_apprentice_adult_litter1",
             "reputation",
             "no_change_fail_rep",
             "meeting"
@@ -65,7 +65,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_kittypet_litter1",
+            "new_cat_kittypet_apprentice_youngadult_litter1",
             "reputation",
             "no_change_fail_rep",
             "meeting"
@@ -95,7 +95,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_kittypet_litter1",
+            "new_cat_kittypet_apprentice_youngadult_litter1",
             "reputation",
             "no_change_fail_rep",
             "meeting"
@@ -305,7 +305,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_loner",
+            "new_cat_loner_apprentice_adult",
             "reputation",
             "injury",
             "claw-wound",
@@ -345,7 +345,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_warrior_loner_litter0_litter1_litter3_litternewborn",
+            "new_cat_apprentice_loner_youngadult_litter0_litter1_litter3_litternewborn",
             "battle_injury",
             "scar",
             "BRIDGE",
@@ -500,7 +500,7 @@
             "herb_gathering",
             "med_only",
             "apprentice",
-            "new_cat_warrior_litter1_litter0_litternewborn",
+            "new_cat_warrior_adult_litter1_litter0_litternewborn",
             "no_change_fail_rep",
             "injury",
             "shock"
@@ -529,7 +529,7 @@
             "herb_gathering",
             "med_only",
             "apprentice",
-            "new_cat_warrior_litter1_litter0_dead_outside_litternewborn_orphaned1_orphaned2",
+            "new_cat_apprentice_youngadult_litter1_litter0_dead_outside_litternewborn_orphaned1_orphaned2",
             "no_change_fail_rep",
             "injury",
             "shock"
@@ -591,7 +591,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_kittypet",
+            "new_cat_kittypet_apprentice_youngadult",
             "reputation",
             "scar",
             "CATBITE",
@@ -664,7 +664,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_loner",
+            "new_cat_loner_apprentice_youngadult",
             "reputation",
             "new_cat_injury",
             "nc_battle_injury"
@@ -695,7 +695,7 @@
         "season": "leaf-bare",
         "tags": [
             "hunting",
-            "new_cat_kittypet_injury",
+            "new_cat_kittypet_injury_apprentice_adult",
             "nc_cold_injury",
             "apprentice"
         ],

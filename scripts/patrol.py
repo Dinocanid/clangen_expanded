@@ -1450,7 +1450,11 @@ class Patrol():
         if not alive:
             self.results_text.append(f"{created_cats[0].name}'s ghost now wanders.")
             game.clan.add_to_unknown(created_cats[0])
-
+            
+        # adult apprentice fix...
+        if status == 'apprentice':
+            created_cats[0].experience = randint(0, 30)
+            
         # now we hurt the kitty
         if "new_cat_injury" in tags and game.clan.game_mode != 'classic':
             new_cat = created_cats[0]

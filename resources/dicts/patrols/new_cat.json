@@ -5,7 +5,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_loner_warrior_litter1",
+            "new_cat_loner_apprentice_adult_litter1",
             "reputation",
             "meeting"
         ],
@@ -34,7 +34,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_loner_warrior_litter1",
+            "new_cat_loner_apprentice_adult_litter1",
             "reputation",
             "meeting"
         ],
@@ -63,7 +63,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_warrior_kittypet_litter1",
+            "new_cat_apprentice_kittypet_adult_litter1",
             "reputation",
             "meeting"
         ],
@@ -92,7 +92,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_warrior_kittypet_litter1",
+            "new_cat_apprentice_kittypet_adult_litter1",
             "reputation",
             "meeting"
         ],
@@ -299,7 +299,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_loner",
+            "new_cat_apprentice_youngadult",
             "reputation",
             "injury",
             "claw-wound",
@@ -443,7 +443,7 @@
             "herb_gathering",
             "med_only",
             "apprentice",
-            "new_cat_warrior_litter1_litter0_litternewborn",
+            "new_cat_apprentice_youngadult_litter1_litter0_litternewborn",
             "no_change_fail_rep",
             "injury",
             "shock"
@@ -587,7 +587,7 @@
             "scar",
             "BRIDGE",
             "reputation",
-            "new_cat_apprentice"
+            "new_cat_apprentice_youngadult"
         ],
         "intro_text": "As the patrol is checking the border lines, they hear an odd sound coming from a nearby bush.",
         "decline_text": "It's probably nothing. The patrol leaves the noise alone and continues on their way.",
@@ -743,7 +743,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_kittypet",
+            "new_cat_apprentice_kittypet_youngadult",
             "reputation",
             "scar",
             "CATBITE",
@@ -849,7 +849,7 @@
         "season": "leaf-bare",
         "tags": [
             "hunting",
-            "new_cat_kittypet_injury",
+            "new_cat_kittypet_youngadult_injury",
             "nc_cold_injury",
             "apprentice"
         ],

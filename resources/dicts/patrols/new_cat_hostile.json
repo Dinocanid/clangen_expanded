@@ -5,7 +5,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_warrior_loner_litter1",
+            "new_cat_apprentice_adult_loner_litter1",
             "reputation",
             "meeting"
         ],
@@ -34,7 +34,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_warrior_loner_litter1",
+            "new_cat_warrior_adult_apprentice_litter1",
             "reputation",
             "meeting"
         ],
@@ -63,7 +63,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_warrior_kittypet_litter1",
+            "new_cat_apprentice_adult_kittypet_litter1",
             "reputation",
             "kits",
             "meeting"
@@ -93,7 +93,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_warrior_kittypet_litter1",
+            "new_cat_apprentice_youngadult_kittypet_litter1",
             "reputation",
             "kits",
             "meeting"
@@ -303,7 +303,7 @@
         "season": "Any",
         "tags": [
             "border",
-            "new_cat_loner",
+            "new_cat_loner_youngadult_apprentice",
             "reputation",
             "scar",
             "LEFTEAR",
@@ -473,7 +473,7 @@
             "med_cat",
             "med_only",
             "no_app",
-            "new_cat_warrior_litter1_litter0_litternewborn",
+            "new_cat_apprentice_youngadult_litter1_litter0_litternewborn",
             "no_change_fail_rep"
         ],
         "intro_text": "While searching for some specific herbs p_l is startled by weird sounds and whispers on the wind.",
@@ -501,7 +501,7 @@
             "med_cat",
             "med_only",
             "no_app",
-            "new_cat_warrior_litter1_litter0_dead_outside_litternewborn_orphaned1_orphaned2",
+            "new_cat_apprentice_youngadult_litter1_litter0_dead_outside_litternewborn_orphaned1_orphaned2",
             "no_change_fail_rep"
         ],
         "intro_text": "While searching for some specific herbs p_l is startled by weird sounds and whispers on the wind.",
@@ -528,7 +528,7 @@
             "herb_gathering",
             "med_only",
             "apprentice",
-            "new_cat_warrior_litter1_litter0_litternewborn",
+            "new_cat_apprentice_adult_litter1_litter0_litternewborn",
             "no_change_fail_rep"
         ],
         "intro_text": "While searching for some specific herbs, p_l is startled by weird sounds and whispers on the wind.",
@@ -555,7 +555,7 @@
             "herb_gathering",
             "med_only",
             "apprentice",
-            "new_cat_warrior_litter1_litter0_dead_outside_litternewborn_orphaned1_orphaned2",
+            "new_cat_apprentice_youngadult_litter1_litter0_dead_outside_litternewborn_orphaned1_orphaned2",
             "no_change_fail_rep"
         ],
         "intro_text": "While searching for some specific herbs, p_l is startled by weird sounds and whispers on the wind.",
@@ -580,7 +580,7 @@
         "season": "leaf-bare",
         "tags": [
             "hunting",
-            "new_cat_kittypet_injury",
+            "new_cat_kittypet_injury_adult",
             "nc_cold_injury",
             "apprentice"
         ],

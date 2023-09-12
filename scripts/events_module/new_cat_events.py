@@ -53,6 +53,16 @@ class NewCatEvents:
                     outside_cat.name.suffix = random.choice(names.names_dict["normal_suffixes"])
                     event_text = event_text + f" They decide to take a new name, {outside_cat.name}."
                 outside_cat.thought = "Is looking around the camp with wonder"
+                
+                # roll with me here, we gotta do a patch for older apprentices
+                if backstory != 'former Clancat':
+                    outside_cat.moons = random.randint(12, 55)
+                    outside_cat.age = random.choice['adult', 'young adult']
+                    outside_cat.experience = random.randint(0, 30)
+                    outside_cat.status = "apprentice"
+                else:
+                    outside_cat.status = None
+                
                 involved_cats = [outside_cat.ID]
                 game.cur_events_list.append(Single_Event(event_text, ["misc"], involved_cats))
 
@@ -92,15 +102,15 @@ class NewCatEvents:
         else:
             other_cat = None
 
-        status = None
-        if "new_warrior" in new_cat_event.tags:
-            status = "warrior"
-        elif "new_app" in new_cat_event.tags:
-            status = "apprentice"
-        elif "new_med_app" in new_cat_event.tags:
-            status = "medicine cat apprentice"
-        elif "new_med" in new_cat_event.tags:
-            status = "medicine cat"
+        if status == None:
+            if "new_warrior" in new_cat_event.tags:
+                status = "warrior"
+            elif "new_app" in new_cat_event.tags:
+                status = "apprentice"
+            elif "new_med_app" in new_cat_event.tags:
+                status = "medicine cat apprentice"
+            elif "new_med" in new_cat_event.tags:
+                status = "medicine cat"
 
 
         
