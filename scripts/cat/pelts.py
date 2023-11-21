@@ -1,5 +1,5 @@
 from random import choice
-from scripts.cat.sprites import Sprites
+from scripts.cat.sprites import sprites
 import random
 from re import sub
 from scripts.game_structure.game_essentials import game
@@ -24,6 +24,7 @@ class Pelt():
         'Sokoke': 'sokoke',
         'Agouti': 'agouti',
         'Singlestripe': 'singlestripe',
+        'Masked': 'masked',
         'Tortie': None,
         'Calico': None,
     }
@@ -47,9 +48,10 @@ class Pelt():
 
     tortiepatterns = ['ONE', 'TWO', 'THREE', 'FOUR', 'REDTAIL', 'DELILAH', 'MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE', 'MINIMALFOUR', 'HALF',
                     'OREO', 'SWOOP', 'MOTTLED', 'SIDEMASK', 'EYEDOT', 'BANDANA', 'PACMAN', 'STREAMSTRIKE', 'ORIOLE', 'CHIMERA', 'DAUB', 'EMBER', 'BLANKET',
-                    'ROBIN', 'BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI', 'SMUDGED', 'DAPPLENIGHT', 'STREAK', 'MASK', 'CHEST', 'ARMTAIL']
+                    'ROBIN', 'BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI', 'SMUDGED', 'DAPPLENIGHT', 'STREAK', 'MASK', 'CHEST', 'ARMTAIL', 'SMOKE', 'GRUMPYFACE',
+                    'BRIE', 'BELOVED', 'BODY', 'SHILOH', 'FRECKLED', 'HEARTBEAT']
     tortiebases = ['single', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
-                'classic', 'sokoke', 'agouti', 'singlestripe']
+                'classic', 'sokoke', 'agouti', 'singlestripe', 'masked']
 
     pelt_length = ["short", "medium", "long"]
     eye_colours = ['YELLOW', 'AMBER', 'HAZEL', 'PALEGREEN', 'GREEN', 'BLUE', 'DARKBLUE', 'GREY', 'CYAN', 'EMERALD', 'PALEBLUE', 
@@ -64,7 +66,7 @@ class Pelt():
             "BOTHBLIND", "BEAKCHEEK", "BEAKLOWER", "CATBITE", "RATBITE", "QUILLCHUNK", "QUILLSCRATCH"]
     scars2 = ["LEFTEAR", "RIGHTEAR", "NOTAIL", "HALFTAIL", "NOPAW", "NOLEFTEAR", "NORIGHTEAR", "NOEAR"]
     scars3 = ["SNAKE", "TOETRAP", "BURNPAWS", "BURNTAIL", "BURNBELLY", "BURNRUMP", "FROSTFACE", "FROSTTAIL", "FROSTMITT",
-            "FROSTSOCK", ]
+            "FROSTSOCK"]
 
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
     plant_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "LAUREL",
@@ -93,7 +95,7 @@ class Pelt():
     tabbies = ["Tabby", "Ticked", "Mackerel", "Classic", "Sokoke", "Agouti"]
     spotted = ["Speckled", "Rosette"]
     plain = ["SingleColour", "TwoColour", "Smoke", "Singlestripe"]
-    exotic = ["Bengal", "Marbled"]
+    exotic = ["Bengal", "Marbled", "Masked"]
     torties = ["Tortie", "Calico"]
     pelt_categories = [tabbies, spotted, plain, exotic, torties]
 
@@ -115,16 +117,20 @@ class Pelt():
     ]
     little_white = ['LITTLE', 'LIGHTTUXEDO', 'BUZZARDFANG', 'TIP', 'BLAZE', 'BIB', 'VEE', 'PAWS',
                     'BELLY', 'TAILTIP', 'TOES', 'BROKENBLAZE', 'LILTWO', 'SCOURGE', 'TOESTAIL', 'RAVENPAW', 'HONEY', 'LUNA',
-                    'EXTRA', 'MUSTACHE', 'REVERSEHEART']
+                    'EXTRA', 'MUSTACHE', 'REVERSEHEART', 'SPARKLE', 'RIGHTEAR', 'LEFTEAR', 'ESTRELLA', 'REVERSEEYE', 'BACKSPOT',
+                    'EYEBAGS', 'LOCKET', 'BLAZEMASK', 'TEARS']
     mid_white = ['TUXEDO', 'FANCY', 'UNDERS', 'DAMIEN', 'SKUNK', 'MITAINE', 'SQUEAKS', 'STAR', 'WINGS',
-                'DIVA', 'SAVANNAH', 'FADESPOTS', 'BEARD', 'DAPPLEPAW', 'TOPCOVER', 'WOODPECKER', 'MISS', 'BOWTIE', 'VEST']
+                'DIVA', 'SAVANNAH', 'FADESPOTS', 'BEARD', 'DAPPLEPAW', 'TOPCOVER', 'WOODPECKER', 'MISS', 'BOWTIE', 'VEST',
+                'FADEBELLY', 'DIGIT', 'FCTWO', 'FCONE', 'MIA', 'ROSINA', 'PRINCESS', 'DOUGIE']
     high_white = ['ANY', 'ANYTWO', 'BROKEN', 'FRECKLES', 'RINGTAIL', 'HALFFACE', 'PANTSTWO',
                 'GOATEE', 'PRINCE', 'FAROFA', 'MISTER', 'PANTS', 'REVERSEPANTS', 'HALFWHITE', 'APPALOOSA', 'PIEBALD',
-                'CURVED', 'GLASS', 'MASKMANTLE', 'MAO', 'PAINTED', 'SHIBAINU', 'OWL', 'BUB', 'SPARROW']
+                'CURVED', 'GLASS', 'MASKMANTLE', 'MAO', 'PAINTED', 'SHIBAINU', 'OWL', 'BUB', 'SPARROW', 'TRIXIE',
+                'SAMMY', 'FRONT', 'BLOSSOMSTEP', 'BULLSEYE', 'FINN', 'SCAR', 'BUSTER', 'HAWKBLAZE', 'CAKE']
     mostly_white = ['VAN', 'ONEEAR', 'LIGHTSONG', 'TAIL', 'HEART', 'MOORISH', 'APRON', 'CAPSADDLE',
-                    'CHESTSPECK', 'BLACKSTAR', 'PETAL', 'HEARTTWO','PEBBLESHINE', 'BOOTS', 'COW', 'COWTWO']
+                    'CHESTSPECK', 'BLACKSTAR', 'PETAL', 'HEARTTWO','PEBBLESHINE', 'BOOTS', 'COW', 'COWTWO', 'LOVEBUG',
+                    'SHOOTINGSTAR', 'EYESPOT', 'PEBBLE', 'TAILTWO', 'BUDDY', 'KROPKA']
     point_markings = ['COLOURPOINT', 'RAGDOLL', 'SEPIAPOINT', 'MINKPOINT', 'SEALPOINT']
-    vit = ['VITILIGO', 'VITILIGOTWO', 'MOON', 'PHANTOM', 'KARPATI', 'POWDER', 'BLEACHED']
+    vit = ['VITILIGO', 'VITILIGOTWO', 'MOON', 'PHANTOM', 'KARPATI', 'POWDER', 'BLEACHED', 'SMOKEY']
     white_sprites = [
         little_white, mid_white, high_white, mostly_white, point_markings, vit, 'FULLWHITE']
 
@@ -581,7 +587,7 @@ class Pelt():
             if chosen_white:
                 chosen_pelt = "TwoColour"
             else:
-                chosen_white = "SingleColour"
+                chosen_pelt = "SingleColour"
         elif chosen_pelt == "Calico":
             if not chosen_white:
                 chosen_pelt = "Tortie"
@@ -884,10 +890,10 @@ class Pelt():
 
         # PELT TINT
         # Basic tints as possible for all colors.
-        base_tints = Sprites.cat_tints["possible_tints"]["basic"]
-        if self.colour in Sprites.cat_tints["colour_groups"]:
-            color_group = Sprites.cat_tints["colour_groups"].get(self.colour, "warm")
-            color_tints = Sprites.cat_tints["possible_tints"][color_group]
+        base_tints = sprites.cat_tints["possible_tints"]["basic"]
+        if self.colour in sprites.cat_tints["colour_groups"]:
+            color_group = sprites.cat_tints["colour_groups"].get(self.colour, "warm")
+            color_tints = sprites.cat_tints["possible_tints"][color_group]
         else:
             color_tints = []
         
@@ -899,10 +905,10 @@ class Pelt():
         # WHITE PATCHES TINT
         if self.white_patches or self.points:
             #Now for white patches
-            base_tints = Sprites.white_patches_tints["possible_tints"]["basic"]
-            if self.colour in Sprites.cat_tints["colour_groups"]:
-                color_group = Sprites.white_patches_tints["colour_groups"].get(self.colour, "white")
-                color_tints = Sprites.white_patches_tints["possible_tints"][color_group]
+            base_tints = sprites.white_patches_tints["possible_tints"]["basic"]
+            if self.colour in sprites.cat_tints["colour_groups"]:
+                color_group = sprites.white_patches_tints["colour_groups"].get(self.colour, "white")
+                color_tints = sprites.white_patches_tints["possible_tints"][color_group]
             else:
                 color_tints = []
             
@@ -971,26 +977,27 @@ class Pelt():
             "Agouti": "c_n tabby",
             "Singlestripe": "dorsal-striped c_n",
             "Rosette": "unusually spotted c_n",
-            "Sokoke": "c_n tabby"
+            "Sokoke": "c_n tabby",
+            "Masked": "masked c_n tabby"
         }
 
-        # Start with determining the base color name. 
+        # Start with determining the base color name
         color_name = str(cat.pelt.colour).lower()
         if color_name in renamed_colors:
             color_name = renamed_colors[color_name]
         
-        # Replace "white" with "pale" if the cat is 
+        # Replace "white" with "pale" if the cat is white
         if cat.pelt.name not in ["SingleColour", "TwoColour", "Tortie", "Calico"] and color_name == "white":
             color_name = "pale"
 
-        # Time to descibe the pattern and any additional colors. 
+        # Time to descibe the pattern and any additional colors
         if cat.pelt.name in pattern_des:
             color_name = pattern_des[cat.pelt.name].replace("c_n", color_name)
         elif cat.pelt.name in Pelt.torties:
-            # Calicos and Torties need their own desciptions. 
+            # Calicos and Torties need their own desciptions
             if short:
-                # If using short, don't add describe the colors of calicos and torties. Just call them calico, tortie, or mottled. 
-                # If using short, don't describe the colors of calicos and torties. Just call them calico, tortie, or mottled. 
+                # If using short, don't add describe the colors of calicos and torties. Just call them calico, tortie, or mottled
+                # If using short, don't describe the colors of calicos and torties. Just call them calico, tortie, or mottled
                 if cat.pelt.colour in Pelt.black_colours + Pelt.brown_colours + Pelt.white_colours and \
                     cat.pelt.tortiecolour in Pelt.black_colours + Pelt.brown_colours + Pelt.white_colours:
                     color_name = "mottled"
@@ -1016,13 +1023,13 @@ class Pelt():
 
         if cat.pelt.white_patches:
             if cat.pelt.white_patches == "FULLWHITE":
-                # If the cat is fullwhite, discard all other information. They are just white. 
+                # If the cat is fullwhite, discard all other information. They are just white
                 color_name = "white"
             if cat.pelt.white_patches in Pelt.mostly_white and cat.pelt.name != "Calico":
                 color_name = f"white and {color_name}"
             elif cat.pelt.name != "Calico":
                 color_name = f"{color_name} and white"
-        
+
         if cat.pelt.points:
             color_name = f"{color_name} point"
             if "ginger point" in color_name:
@@ -1039,10 +1046,10 @@ class Pelt():
         else:
             color_name = f"{color_name} cat"
 
-        # Here is the place where we can add some additional details about the cat, for the full non-short one. 
-        # These include notable missing limbs, vitiligo, long-furred-ness, and 3 or more scars. 
+        # Here is the place where we can add some additional details about the cat, for the full non-short one
+        # These include notable missing limbs, vitiligo, long-furred-ness, and 3 or more scars
         if not short:
-            
+
             scar_details = {
                 "NOTAIL": "no tail", 
                 "HALFTAIL": "half a tail", 

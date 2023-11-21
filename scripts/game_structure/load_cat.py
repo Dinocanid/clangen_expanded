@@ -141,6 +141,8 @@ def json_load():
             new_cat.former_mentor = cat["former_mentor"] if "former_mentor" in cat else []
             new_cat.patrol_with_mentor = cat["patrol_with_mentor"] if "patrol_with_mentor" in cat else 0
             new_cat.no_kits = cat["no_kits"]
+            new_cat.no_mates = cat["no_mates"] if "no_mates" in cat else False
+            new_cat.no_retire = cat["no_retire"] if "no_retire" in cat else False
             new_cat.exiled = cat["exiled"]
 
             if "skill_dict" in cat:
@@ -495,5 +497,7 @@ def version_convert(version_info):
                     c.permanent_condition[con].pop("moons_with")
                 c.permanent_condition[con]["moon_start"] = game.clan.age - moons_with
             
-        
-            
+    if version < 3 and game.clan.freshkill_pile:
+        # freshkill start for older clans
+        add_prey = game.clan.freshkill_pile.amount_food_needed() * 2
+        game.clan.freshkill_pile.add_freshkill(add_prey)
