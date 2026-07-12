@@ -32,8 +32,8 @@ class ViewCardsWindow(GameWindow):
             anchors={"left_target": self.elements["card_icon_container"]},
             manager=MANAGER,
         )
-
-        self.create_card_display(game.clan.cruel_cards[0])
+        if len(game.clan.cruel_cards) > 0:
+            self.create_card_display(game.clan.cruel_cards[0])
 
     def create_card_icons(self):
         COLUMNS = 3

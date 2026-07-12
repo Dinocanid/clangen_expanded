@@ -45,5 +45,11 @@
       "seasons.lock_season": true,
       "seasons.force_starting_season": "Leaf-bare"
     }
+  },
+	"long_season": {
+    "card_art": "environment/tainted.png",
+    "modifiers": {
+      "seasons.lock_season": true
+    }
   }
 }
