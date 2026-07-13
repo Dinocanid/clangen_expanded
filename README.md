@@ -8,6 +8,11 @@ This mod uses the **dev version** of ClanGen, and as a result must be ran from s
 
 **It is recommended that you start a new game**, it is unclear how compatible it is with existing saves from other ClanGen versions.
 
+## Bug reports
+Please place bug reports here: https://github.com/Dinocanid/clangen_expanded/issues.
+
+It is worth noting that some bugs may be from Official ClanGen dev, in which case I would wait on an official fix versus adding a patch and then having to later undo the patch.
+
 ## Current Features
 - [Cruel Season] New card
 	- **Long season:** Game is temporarily locked to the current season
