@@ -293,6 +293,72 @@ def one_moon():
         if not has_med:
             string = i18n.t("defaults.warn_no_medcats")
             game.cur_events_list.insert(0, Single_Event(string, "health"))
+            
+    ## RANDOM CARD MOD START
+    if game.clan.game_mode in ("expanded", "cruel_season"):
+        if game.clan.card_countdown > 0:
+            game.clan.card_countdown -= 1
+        else:
+            # INSERT RANDOM CARD FUNCTION HERE
+            # For now let's make a custom array, in a later update I'll probably clean it up
+            card_pool = [
+                "forsaken",
+                "for_the_throne",
+                "plague_ridden",
+                "stolen_vitality",
+                "lean_meat",
+                "resolute",
+                "fated_paths",
+                "survival_of_fittest",
+                "kit_season",
+                "mouths_to_feed",
+                "malicious_aura",
+                "long_season",
+                "heartless"
+            ]
+            # For now these will be regular events. A later update can make use of omen or prophecy skills
+            card_events = [
+                {
+                    "card_name":  "for_the_throne",
+                    "event_text": ["Dark clouds cover the moon, bathing the camp in darkness as the scent of blood fills the air. After a few moments, the clouds recede."]
+                }
+            ]
+            
+            if len(game.clan.cruel_cards) > 0:
+                # Remove a card from the deck, if possible
+                if random.random() < 0.9: # 90% chance of removing a card
+                    removed_card = random.choice(card_pool)
+                    if removed_card in game.clan.cruel_cards:
+                        game.clan.cruel_cards.remove(removed_card) # Luckily we don't need to make config changes
+                        card_pool.remove(removed_card) # Prevent it from immedately being re-chosen
+                        print("Card added: ", removed_card)
+                # Filter out cards we already have from the pool
+                for cid in game.clan.cruel_cards:
+                    if cid in card_pool:
+                        card_pool.remove(cid)
+                # Pick a card, (almost) any card
+                if len(game.clan.cruel_cards) < get_config("cruel_season.card_limit"):
+                    if random.random() < 0.30: # 30% chance of adding a card
+                        # We'll do conflicts manually for now, we only have 2
+                        if "stolen_vitality" in game.clan.cruel_cards:
+                            card_pool.remove("forsaken")
+                        elif "forsaken" in game.clan.cruel_cards:
+                            card_pool.remove("stolen_vitality")
+                        new_card = random.choice(card_pool)
+                        game.clan.cruel_cards.append(new_card)
+                        print("Card added: ", new_card)
+                        # Add a spooky event
+                        card_event_text = "The clan has felt a shift in the air. Times are changing..."
+                        for card_event_info in card_events:
+                            if card_event_info["card_name"] == new_card:
+                                card_event_text = random.choice(card_event_info["event_text"])
+                        game.cur_events_list.append(
+                            Single_Event(card_event_text, ["misc"])
+                        )
+            # Reset countdown
+            game.clan.card_countdown = random.randint(6, 24)
+        print("Next card change in: ", str(game.clan.card_countdown), " moons.")
+    ## RANDOM CARD MOD END
 
     # Clear the list of cats that died this moon.
     game.just_died.clear()

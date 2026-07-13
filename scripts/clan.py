@@ -86,6 +86,7 @@ class Clan:
         symbol=None,
         game_mode="classic",
         cruel_cards: list[str] = None,
+        card_countdown=None,
         starting_members=None,
         starting_season="Newleaf",
         self_run_init_functions=True,
@@ -105,6 +106,10 @@ class Clan:
 
         # needs to happen immediately so that any config retrievals will be accurate
         self.cruel_cards: list[str] = cruel_cards if cruel_cards else []
+        
+        ## RANDOM CARD MOD START
+        self.card_countdown = card_countdown
+        ## RANDOM CARD MOD END
 
         self.leader = leader
         self._leader_lives = 9
@@ -484,6 +489,7 @@ class Clan:
             "clan_symbol": self.chosen_symbol,
             "gamemode": self.game_mode,
             "cruel_cards": self.cruel_cards,
+            "card_countdown": self.card_countdown,
             "used_group_IDs": game.used_group_IDs,
             "last_focus_change": self.last_focus_change,
             "clans_in_focus": self.clans_in_focus,
@@ -852,6 +858,7 @@ class Clan:
                 for c in clan_data.get("cruel_cards", [])
                 if c in constants.CRUEL_CARDS_ALL
             ],
+            card_countdown=clan_data["card_countdown"],
             self_run_init_functions=False,
         )
         game.clan.post_initialization_functions()
