@@ -6,6 +6,8 @@ A [ClanGen](https://github.com/ClanGenOfficial/clangen) mod by Dinocanid
 ## Running from source
 This mod uses the **dev version** of ClanGen, and as a result must be ran from source. For instructions on how to do so, please see the official ClanGen page here: https://github.com/ClanGenOfficial/clangen
 
+**It is recommended that you start a new game**, it is unclear how compatible it is with existing saves from other ClanGen versions.
+
 ## Current Features
 - [Cruel Season] New card
 	- **Long season:** Game is temporarily locked to the current season
