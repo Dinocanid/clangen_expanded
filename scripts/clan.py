@@ -108,7 +108,7 @@ class Clan:
         self.cruel_cards: list[str] = cruel_cards if cruel_cards else []
         
         ## RANDOM CARD MOD START
-        self.card_countdown = card_countdown
+        self.card_countdown = 6
         ## RANDOM CARD MOD END
 
         self.leader = leader
