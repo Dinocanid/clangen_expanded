@@ -330,13 +330,14 @@ def one_moon():
                     if removed_card in game.clan.cruel_cards:
                         game.clan.cruel_cards.remove(removed_card) # Luckily we don't need to make config changes
                         card_pool.remove(removed_card) # Prevent it from immedately being re-chosen
+                        print("Card added: ", removed_card)
                 # Filter out cards we already have from the pool
                 for cid in game.clan.cruel_cards:
                     if cid in card_pool:
                         card_pool.remove(cid)
                 # Pick a card, (almost) any card
                 if len(game.clan.cruel_cards) < get_config("cruel_season.card_limit"):
-                    if random.random() < 0.25: # 25% chance of adding a card
+                    if random.random() < 0.30: # 30% chance of adding a card
                         # We'll do conflicts manually for now, we only have 2
                         if "stolen_vitality" in game.clan.cruel_cards:
                             card_pool.remove("forsaken")
@@ -344,6 +345,7 @@ def one_moon():
                             card_pool.remove("stolen_vitality")
                         new_card = random.choice(card_pool)
                         game.clan.cruel_cards.append(new_card)
+                        print("Card added: ", new_card)
                         # Add a spooky event
                         card_event_text = "The clan has felt a shift in the air. Times are changing..."
                         for card_event_info in card_events:
