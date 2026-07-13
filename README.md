@@ -25,3 +25,6 @@ It is worth noting that some bugs may be from Official ClanGen dev, in which cas
 - [Cruel Season] Card that lowers minimum age for apprentices and graduation (this might need some extra fiddling, we'll see)
 - Setting that makes medicine cats less likely to have kits
 - Leaders doing exiles themselves (because currently clans do nothing about serial killers)
+
+## How often are updates?
+Honestly, updates are whenever I have time. There's no ETA for updates, and I tend to mod the game as I play.
