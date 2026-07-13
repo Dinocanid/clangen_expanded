@@ -25,6 +25,7 @@ It is worth noting that some bugs may be from Official ClanGen dev, in which cas
 - [Cruel Season] Card that lowers minimum age for apprentices and graduation (this might need some extra fiddling, we'll see)
 - Setting that makes medicine cats less likely to have kits
 - Leaders doing exiles themselves (because currently clans do nothing about serial killers)
+- [Cruel Season] More event strings for card pulls
 
 # FAQ
 ### How often are updates?
