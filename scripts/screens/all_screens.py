@@ -1,30 +1,38 @@
-from .Screens import Screens
-from .StartScreen import StartScreen
-from .PatrolScreen import PatrolScreen
+import warnings
+
 from .AllegiancesScreen import AllegiancesScreen
 from .CeremonyScreen import CeremonyScreen
+from .ChangeGenderScreen import ChangeGenderScreen
 from .ChooseAdoptiveParentScreen import ChooseAdoptiveParentScreen
-from .ProfileScreen import ProfileScreen
-from .RoleScreen import RoleScreen
-from .SpriteInspectScreen import SpriteInspectScreen
-from .DFScreen import DFScreen
-from .StarClanScreen import StarClanScreen
-from .UnknownResScreen import UnknownResScreen
-from .MakeClanScreen import MakeClanScreen
-from .MedDenScreen import MedDenScreen
-from .RelationshipScreen import RelationshipScreen
-from .SettingsScreen import SettingsScreen
-from .SwitchClanScreen import SwitchClanScreen
-from .ClanScreen import ClanScreen
-from .ListScreen import ListScreen
-from .EventsScreen import EventsScreen, GatheringScreen
 from .ChooseMateScreen import ChooseMateScreen
 from .ChooseMentorScreen import ChooseMentorScreen
-from .FamilyTreeScreen import FamilyTreeScreen
-from .OutsideClanScreen import OutsideClanScreen
-from .MediationScreen import MediationScreen
+from .ClanScreen import ClanScreen
 from .ClanSettingsScreen import ClanSettingsScreen
-from .ClearingScreen import ClearingScreen
+from .EventEditScreen import EventEditScreen
+from .EventsScreen import EventsScreen
+from .FamilyTreeScreen import FamilyTreeScreen
+from .LeaderDenScreen import LeaderDenScreen
+from .ListScreen import ListScreen
+from .MedDenScreen import MedDenScreen
+from .MediationScreen import MediationScreen
+from .PatrolScreen import PatrolScreen
+from .ProfileScreen import ProfileScreen
+from .RelationshipScreen import RelationshipScreen
+from .RoleScreen import RoleScreen
+from .Screens import Screens
+from .SettingsScreen import SettingsScreen
+from .SpriteInspectScreen import SpriteInspectScreen
+from .StartScreen import StartScreen
+from .SwitchClanScreen import SwitchClanScreen
+from .WarriorDenScreen import WarriorDenScreen
+from .enums import GameScreen
+from .make_clan_screens.ChooseCampScreen import ChooseCampScreen
+from .make_clan_screens.ChooseCardsScreen import ChooseCardsScreen
+from .make_clan_screens.ChooseCatsScreen import ChooseCatsScreen
+from .make_clan_screens.ChooseModeScreen import ChooseModeScreen
+from .make_clan_screens.ChooseNameScreen import ChooseNameScreen
+from .make_clan_screens.ChooseSymbolScreen import ChooseSymbolScreen
+from .make_clan_screens.ClanCreatedScreen import ClanCreatedScreen
 
 # ---------------------------------------------------------------------------- #
 #                                  UI RULES                                    #
@@ -45,51 +53,54 @@ BUTTONS:
     ~Generally, the vertical gap between buttons should be 5px
 """
 
-# SCREENS
-screens = Screens()
-
-# ---------------------------------------------------------------------------- #
-#                                 cat_screens.py                               #
-# ---------------------------------------------------------------------------- #
-
-profile_screen = ProfileScreen('profile screen')
-ceremony_screen = CeremonyScreen('ceremony screen')
-role_screen = RoleScreen('role screen')
-sprite_inspect_screen = SpriteInspectScreen("sprite inspect screen")
+screens = None
+screen_dict = {}
 
 
-make_clan_screen = MakeClanScreen('make clan screen')
+def rebuild_all_screens():
+    global screens
+    screens = Screens()
+
+    enum_to_class = {
+        GameScreen.PROFILE: ProfileScreen,
+        GameScreen.CEREMONY: CeremonyScreen,
+        GameScreen.CHANGE_ROLE: RoleScreen,
+        GameScreen.SPRITE_INSPECT: SpriteInspectScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_MODE: ChooseModeScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_CARDS: ChooseCardsScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_NAME: ChooseNameScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_CATS: ChooseCatsScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_CAMP: ChooseCampScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_SYMBOL: ChooseSymbolScreen,
+        GameScreen.MAKE_CLAN_CLAN_CREATED: ClanCreatedScreen,
+        GameScreen.ALLEGIANCES: AllegiancesScreen,
+        GameScreen.CAMP: ClanScreen,
+        GameScreen.LIST: ListScreen,
+        GameScreen.MED_DEN: MedDenScreen,
+        GameScreen.WARRIOR_DEN: WarriorDenScreen,
+        GameScreen.LEADER_DEN: LeaderDenScreen,
+        GameScreen.EVENTS: EventsScreen,
+        GameScreen.SETTINGS: SettingsScreen,
+        GameScreen.CLAN_SETTINGS: ClanSettingsScreen,
+        GameScreen.START: StartScreen,
+        GameScreen.SWITCH_CLAN: SwitchClanScreen,
+        GameScreen.PATROL: PatrolScreen,
+        GameScreen.CHOOSE_MATE: ChooseMateScreen,
+        GameScreen.CHOOSE_MENTOR: ChooseMentorScreen,
+        GameScreen.CHOOSE_ADOPTIVE_PARENT: ChooseAdoptiveParentScreen,
+        GameScreen.RELATIONSHIP: RelationshipScreen,
+        GameScreen.FAMILY_TREE: FamilyTreeScreen,
+        GameScreen.MEDIATION: MediationScreen,
+        GameScreen.CHANGE_GENDER: ChangeGenderScreen,
+        GameScreen.EVENT_EDIT: EventEditScreen,
+    }
+
+    for enum, classobj in enum_to_class.items():
+        screen_dict[enum] = classobj(enum)
 
 
-allegiances_screen = AllegiancesScreen('allegiances screen')
-camp_screen = ClanScreen('camp screen')
-catlist_screen = ListScreen('list screen')
-starclan_screen = StarClanScreen('starclan screen')
-df_screen = DFScreen('dark forest screen')
-med_den_screen = MedDenScreen('med den screen')
-freshkill_pile_screen = ClearingScreen('clearing screen')
+def get_screen(screen: GameScreen):
+    return screen_dict[screen]
 
 
-events_screen = EventsScreen('events screen')
-gathering_screen = GatheringScreen('gathering screen')
-
-
-settings_screen = SettingsScreen('settings screen')
-clan_settings_screen = ClanSettingsScreen('clan settings screen')
-start_screen = StartScreen('start screen')
-switch_clan_screen = SwitchClanScreen('switch clan screen')
-
-
-patrol_screen = PatrolScreen('patrol screen')
-
-
-choose_mate_screen = ChooseMateScreen('choose mate screen')
-choose_mentor_screen = ChooseMentorScreen('choose mentor screen')
-choose_adoptive_parent_screen = ChooseAdoptiveParentScreen('choose adoptive parent screen')
-relationship_screen = RelationshipScreen('relationship screen')
-view_children_screen = FamilyTreeScreen('see kits screen')
-mediation_screen = MediationScreen("mediation screen")
-
-
-outside_clan_screen = OutsideClanScreen('other screen')
-unknown_residence_screen = UnknownResScreen('unknown residence screen')
+rebuild_all_screens()
