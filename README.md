@@ -26,6 +26,7 @@ It is worth noting that some bugs may be from Official ClanGen dev, in which cas
 - Setting that makes medicine cats less likely to have kits
 - Leaders doing exiles themselves (because currently clans do nothing about serial killers)
 - [Cruel Season] More event strings for card pulls
+- Prophecies and omens, predicting future events in cryptic ways (in Cruel Season mode, this could add cards to the deck)
 
 # FAQ
 ### How often are updates?
